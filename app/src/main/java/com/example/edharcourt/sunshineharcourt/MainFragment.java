@@ -15,6 +15,13 @@ import java.util.List;
 
 
 /**
+ *
+ * http://api.openweathermap.org/data/2.5/forecast/daily?q=13625,us&cnt=7&APPID=ad7b5e8f17dd3930033d94f852efacee
+ *
+ * Boiler plate for URL connection
+ * 
+ * https://gist.github.com/udacityandroid/d6a7bb21904046a91695
+ *
  * A simple {@link Fragment} subclass.
  */
 public class MainFragment extends Fragment {
