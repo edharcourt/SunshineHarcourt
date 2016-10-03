@@ -11,4 +11,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.edharcourt.sunshineharcourt.MainActivity">
 
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="com.example.edharcourt.sunshineharcourt.ForecastFragment"
+        android:layout="@layout/fragment_main"
+        android:id="@+id/main_fragment" />
+
+
 </FrameLayout>
