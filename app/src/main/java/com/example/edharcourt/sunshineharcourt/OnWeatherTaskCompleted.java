@@ -5,5 +5,5 @@ package com.example.edharcourt.sunshineharcourt;
  */
 
 public interface OnWeatherTaskCompleted {
-    void onTaskCmpleted(String result);
+    void onTaskCmpleted(String [] result);
 }

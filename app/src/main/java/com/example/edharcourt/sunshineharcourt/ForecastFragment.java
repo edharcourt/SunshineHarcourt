@@ -41,6 +41,7 @@ public class ForecastFragment extends Fragment implements OnWeatherTaskCompleted
     ArrayAdapter<String> mForecastAdapter = null;
 
     private final static String LOG_TAG = ForecastFragment.class.getSimpleName();
+    private final static String APIKEY = "ad7b5e8f17dd3930033d94f852efacee";
 
     public ForecastFragment() {
         // Required empty public constructor
@@ -61,7 +62,6 @@ public class ForecastFragment extends Fragment implements OnWeatherTaskCompleted
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_refresh) {
-            String APIKEY = "ad7b5e8f17dd3930033d94f852efacee";
 
             Uri.Builder builder = new Uri.Builder();
             builder.scheme("http").
@@ -104,18 +104,13 @@ public class ForecastFragment extends Fragment implements OnWeatherTaskCompleted
         ListView lv = (ListView) root.findViewById(R.id.listview_forcast);
         lv.setAdapter(mForecastAdapter);
 
-
-
         return root;
     }
 
     @Override
-    public void onTaskCmpleted(String result) {
-        String tmp = result;
+    public void onTaskCmpleted(String [] result) {
+        String [] tmp = result;
         return;
-
     }
 
-
-
-}
+}  // ForecastFragment

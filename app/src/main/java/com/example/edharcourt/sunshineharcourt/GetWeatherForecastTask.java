@@ -21,7 +21,7 @@ import java.text.SimpleDateFormat;
  * Created by edharcourt on 10/1/16.
  */
 
-public class GetWeatherForecastTask extends AsyncTask<String, Void, String> {
+public class GetWeatherForecastTask extends AsyncTask<String, Void, String []> {
 
     private final static String LOG_TAG = GetWeatherForecastTask.class.getSimpleName();
 
@@ -33,7 +33,7 @@ public class GetWeatherForecastTask extends AsyncTask<String, Void, String> {
     }
 
     @Override
-    protected String doInBackground(String... urlstr) {
+    protected String [] doInBackground(String... urlstr) {
         // These two need to be declared outside the try/catch
         // so that they can be closed in the finally block.
         HttpURLConnection urlConnection = null;
@@ -47,7 +47,7 @@ public class GetWeatherForecastTask extends AsyncTask<String, Void, String> {
 
             // Create the request to OpenWeatherMap, and open the connection
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setRequestMethod("GET");
+            urlConnection.setRequestMethod("GET"); // GET is default
             urlConnection.connect();
 
             // Read the input stream into a String
@@ -90,11 +90,19 @@ public class GetWeatherForecastTask extends AsyncTask<String, Void, String> {
             }
         }
 
-        return forecastJsonStr;
+        String [] forecasts = null;
+
+        try {
+            forecasts = getWeatherDataFromJson(forecastJsonStr,7);
+        } catch (JSONException e) {
+            return null;
+        }
+
+        return forecasts;
     }
 
     @Override
-    protected void onPostExecute(String s) {
+    protected void onPostExecute(String [] s) {
         super.onPostExecute(s);
         listener.onTaskCmpleted(s);
     }
